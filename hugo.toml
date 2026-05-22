@@ -10,6 +10,10 @@ show_recent_posts = false
 name = 'Events'
 pageRef = '/events/'
 
+[[menus.main]]
+name = 'Get Involved'
+pageRef = '/get-involved'
+
 [params.ananke.social.follow]
 networks = ["github", "instagram", "discord", "email"]
 

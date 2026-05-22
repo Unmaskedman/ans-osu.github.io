@@ -1,0 +1,45 @@
+<div class="w-100 pa2 "> <!-- </div>mb4 nested-copy-line-height relative bg-white"> -->
+  <div class="w-100 mb3 pa4 gray overflow-hidden bg-white br3 shadow-1">
+
+    <h1 class="f3 near-black">
+      <a href="{{ .RelPermalink }}" class="link black dim">
+        {{ .Title }}
+      </a>
+    </h1>
+
+    {{ $tagColors := dict
+      "general-meeting" "#003B5C"
+      "social" "#4A773C"
+      "outreach" "#D3832B"
+      "professional-development" "#7A6855"
+    }}
+    <div class="mb3">
+      {{ range .Params.tags }}
+        {{ $color := index $tagColors . | default "bg-mid-gray white" }}
+
+        <a href="/tags/{{ . }}/" class="f6 link dim br-pill ph3 pv1 mb2 dib mr2 white" style="background-color: {{ $color }};">
+          {{ . | title | replaceRE "-" " " }}
+        </a>
+      {{ end }}
+    </div>
+
+    <p class="mb1">
+      <strong>When:</strong> {{ .Params.start_time }}-{{ .Params.end_time }} on {{ .Params.event_date }} 
+    </p>
+
+    <p class="mb1">
+      <strong>Where:</strong> {{ .Params.location }}
+    </p>
+
+    {{ with .Params.food }}
+      <p class="mb1">
+        <strong>Provided Food:</strong> {{ . }}
+      </p>
+    {{ end }}
+
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      {{ .Summary }}
+    </div>
+
+  </div>
+</div>

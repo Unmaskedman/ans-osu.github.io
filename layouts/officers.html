@@ -1,4 +1,30 @@
 {{ define "header" }}{{ partials.Include "page-header.html" . }}{{ end }}
+{{ define "head" }}
+  {{ partials.Include "head-additions.html" . }}
+  <style>
+    .officer-portrait { position: relative; }
+    .officer-photo { transition: opacity 250ms ease; }
+    .officer-about {
+      position: absolute;
+      inset: 0;
+      padding: 1.5rem;
+      overflow-y: auto;
+      background: rgba(0, 0, 0, 0.78);
+      color: white;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 250ms ease, visibility 250ms ease;
+    }
+    .officer-card:hover .officer-photo,
+    .officer-card:focus-within .officer-photo { opacity: 0.35; }
+    .officer-card:hover .officer-about,
+    .officer-card:focus-within .officer-about { opacity: 1; visibility: visible; }
+    .officer-card:focus-visible { outline: 3px solid #003b5c; outline-offset: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      .officer-photo, .officer-about { transition: none; }
+    }
+  </style>
+{{ end }}
 {{ define "main" }}
   <div class="mt2 mw8 center">
   <article class="center cf pv5 ph3 ph4-ns">
@@ -13,25 +39,31 @@
 
     <div class="flex flex-wrap">
       {{ range .RegularPages.ByWeight }}
-        {{ $name := .Title }}
+        {{ $name := strings.TrimSpace (printf "%s %s" (.Params.first_name | default "") (.Params.last_name | default "")) }}
         {{ $officer := . }}
         <div class="w-100 w-50-m w-third-l mb4 pa2">
-          <article class="h-100 overflow-hidden bg-white br3 shadow-1">
-            <div class="aspect-ratio aspect-ratio--1x1 bg-light-gray">
+          <article class="officer-card h-100 overflow-hidden bg-white br3 shadow-1"{{ if .Content }} tabindex="0" aria-label="About {{ $name }}"{{ end }}>
+            <div class="officer-portrait aspect-ratio aspect-ratio--1x1 bg-light-gray">
               {{ with .Params.photo }}
                 {{ $photo := . | relURL }}
                 {{ with $officer.Resources.GetMatch . }}
                   {{ $photo = .RelPermalink }}
                 {{ end }}
-                <img src="{{ $photo }}" alt="Portrait of {{ $name }}" class="aspect-ratio--object w-100 h-100" style="object-fit: cover;" loading="lazy">
+                <img src="{{ $photo }}" alt="Portrait of {{ $name }}" class="{{ if $officer.Content }}officer-photo {{ end }}aspect-ratio--object w-100 h-100" style="object-fit: cover;" loading="lazy">
               {{ else }}
-                <div class="aspect-ratio--object flex items-center justify-center gray" role="img" aria-label="Photo coming soon">
+                <div class="{{ if .Content }}officer-photo {{ end }}aspect-ratio--object flex items-center justify-center gray" role="img" aria-label="Photo coming soon">
                   <span class="f5">Photo coming soon</span>
+                </div>
+              {{ end }}
+              {{ with .Content }}
+                <div class="officer-about lh-copy f5">
+                  <h3 class="f4 mt0">About {{ $officer.Params.first_name }}</h3>
+                  {{ . }}
                 </div>
               {{ end }}
             </div>
             <div class="pa4 tc">
-              <h2 class="f3 near-black mt0 mb2">{{ .Title }}</h2>
+              <h2 class="f3 near-black mt0 mb2">{{ $name }}</h2>
               <p class="f5 gray mv0">{{ .Params.role }}</p>
               {{ if or .Params.linkedin .Params.email }}
                 <div class="mt3 flex flex-wrap justify-center">

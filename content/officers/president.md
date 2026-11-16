@@ -1,5 +1,6 @@
 +++
-title = "Jackson"
+first_name = "Jackson"
+last_name = ""
 role = "President"
 weight = 10
 draft = false
@@ -9,3 +10,6 @@ photo = "/images/officers/placeholder.svg"
 linkedin = ""
 email = ""
 +++
+
+<!-- Replace this paragraph with the officer's biography. -->
+Bio coming soon!

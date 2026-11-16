@@ -18,6 +18,10 @@ pageRef = '/get-involved'
 name = 'Outreach'
 pageRef = '/outreach'
 
+[[menus.main]]
+name = 'Officers'
+pageRef = '/officers'
+
 [params.ananke.social.follow]
 networks = ["github", "instagram", "discord", "email"]
 

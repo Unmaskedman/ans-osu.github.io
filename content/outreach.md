@@ -1,6 +1,6 @@
 +++
 title = "Outreach"
-draft = "false"
+draft = false
 featured_image = "images/main_header.jpg"
 +++
 

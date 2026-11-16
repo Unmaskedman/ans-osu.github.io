@@ -1,0 +1,53 @@
+{{ define "header" }}{{ partials.Include "page-header.html" . }}{{ end }}
+{{ define "main" }}
+  <div class="mt2 mw8 center">
+  <article class="center cf pv5 ph3 ph4-ns">
+    {{ if not .Params.featured_image }}
+      <header>
+        <h1 class="f1">{{ .Title }}</h1>
+      </header>
+    {{ end }}
+    <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | compare.Default "mid-gray" }} mb4">
+      {{ .Content }}
+    </div>
+
+    <div class="flex flex-wrap">
+      {{ range .RegularPages.ByWeight }}
+        {{ $name := .Title }}
+        {{ $officer := . }}
+        <div class="w-100 w-50-m w-third-l mb4 pa2">
+          <article class="h-100 overflow-hidden bg-white br3 shadow-1">
+            <div class="aspect-ratio aspect-ratio--1x1 bg-light-gray">
+              {{ with .Params.photo }}
+                {{ $photo := . | relURL }}
+                {{ with $officer.Resources.GetMatch . }}
+                  {{ $photo = .RelPermalink }}
+                {{ end }}
+                <img src="{{ $photo }}" alt="Portrait of {{ $name }}" class="aspect-ratio--object w-100 h-100" style="object-fit: cover;" loading="lazy">
+              {{ else }}
+                <div class="aspect-ratio--object flex items-center justify-center gray" role="img" aria-label="Photo coming soon">
+                  <span class="f5">Photo coming soon</span>
+                </div>
+              {{ end }}
+            </div>
+            <div class="pa4 tc">
+              <h2 class="f3 near-black mt0 mb2">{{ .Title }}</h2>
+              <p class="f5 gray mv0">{{ .Params.role }}</p>
+              {{ if or .Params.linkedin .Params.email }}
+                <div class="mt3 flex flex-wrap justify-center">
+                  {{ with .Params.linkedin }}
+                    <a href="{{ . }}" class="link dim dark-blue f6 dib mh2 pv2" aria-label="{{ $name }} on LinkedIn">LinkedIn</a>
+                  {{ end }}
+                  {{ with .Params.email }}
+                    <a href="mailto:{{ . }}" class="link dim dark-blue f6 dib mh2 pv2" aria-label="Email {{ $name }}">Email</a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
+          </article>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+  </div>
+{{ end }}

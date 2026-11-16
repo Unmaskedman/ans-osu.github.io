@@ -1,6 +1,8 @@
 ---
 title: "American Nuclear Society at Oregon State University"
 featured_image: "/images/main_header.jpg"
+# Banner framing: top, center, bottom, or a custom value such as "center 35%".
+featured_image_position: "top"
 ---
 
 The American Nuclear Society / Health Physics Society at Oregon State University is a student-led organization tied to the American Nuclear Society National Chapter.

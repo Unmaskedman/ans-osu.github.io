@@ -2,6 +2,8 @@
 title = "Getting Involved"
 draft = false
 featured_image = "images/main_header.jpg"
+# Banner framing: top, center, bottom, or a custom value such as "center 35%".
+featured_image_position = "top"
 +++
 
 The Oregon State American Nuclear Society Student Chapter is open to all who have an interest in nuclear science and technology.

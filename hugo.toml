@@ -11,19 +11,23 @@ name = 'Events'
 pageRef = '/events/'
 
 [[menus.main]]
-name = 'Get Involved'
-pageRef = '/get-involved'
-
-[[menus.main]]
 name = 'Outreach'
 pageRef = '/outreach'
+
+[[menus.main]]
+name = 'Get Involved'
+pageRef = '/get-involved'
 
 [[menus.main]]
 name = 'Officers'
 pageRef = '/officers'
 
+[[menus.main]]
+name = 'Support Us'
+#pageRef = 'some path tBD'
+
 [params.ananke.social.follow]
-networks = ["github", "instagram", "discord", "email"]
+networks = ["instagram", "discord", "email"]
 
 [params.ananke.social.instagram]
 username = "ansosuchapter"
@@ -34,5 +38,5 @@ label = "Discord"
 profile = "https://discord.gg/7ZQtrqdb"
 icon = "discord"
 
-[params.ananke.social.github]
-username = "ans-osu"
+[params.ananke.social.email]
+profilelink = "mailto:ans@oregonstate.edu"

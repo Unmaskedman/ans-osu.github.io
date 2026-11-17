@@ -1,15 +1,13 @@
 +++
 first_name = "Jackson"
-last_name = ""
+last_name = "Jorgenson"
 role = "President"
 weight = 10
 draft = false
-# Place portraits in static/images/officers/ and set photo to "/images/officers/filename.jpg".
 photo = "/images/officers/placeholder.svg"
-# Optional contact links; leave blank to hide. Use a full https:// LinkedIn URL.
-linkedin = ""
-email = ""
+linkedin = "jacksonjorgenson"
+email = "jorgjack@oregonstate.edu"
 +++
 
 <!-- Replace this paragraph with the officer's biography. -->
-Bio coming soon!
+My name is jackson I think

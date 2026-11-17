@@ -1,6 +1,7 @@
 {{ define "header" }}{{ partials.Include "page-header.html" . }}{{ end }}
 {{ define "head" }}
   {{ partials.Include "head-additions.html" . }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <style>
     .officer-portrait { position: relative; }
     .officer-photo { transition: opacity 250ms ease; }
@@ -68,10 +69,14 @@
               {{ if or .Params.linkedin .Params.email }}
                 <div class="mt3 flex flex-wrap justify-center">
                   {{ with .Params.linkedin }}
-                    <a href="{{ . }}" class="link dim dark-blue f6 dib mh2 pv2" aria-label="{{ $name }} on LinkedIn">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/{{ strings.TrimSpace . }}/" class="link dim dark-blue dib mh2 pa2" aria-label="{{ $name }} on LinkedIn" title="LinkedIn">
+                      <i class="fa-brands fa-linkedin fa-xl" aria-hidden="true"></i>
+                    </a>
                   {{ end }}
                   {{ with .Params.email }}
-                    <a href="mailto:{{ . }}" class="link dim dark-blue f6 dib mh2 pv2" aria-label="Email {{ $name }}">Email</a>
+                    <a href="mailto:{{ . }}" class="link dim dark-blue dib mh2 pa2" aria-label="Email {{ $name }}" title="Email">
+                      <i class="fa-solid fa-envelope fa-xl" aria-hidden="true"></i>
+                    </a>
                   {{ end }}
                 </div>
               {{ end }}

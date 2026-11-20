@@ -1,0 +1,42 @@
+baseURL = 'https://ans-osu.org/'
+languageCode = 'en-us'
+title = 'ANS at OSU'
+theme = 'ananke'
+
+[params.ananke]
+show_recent_posts = false
+
+[[menus.main]]
+name = 'Events'
+pageRef = '/events/'
+
+[[menus.main]]
+name = 'Outreach'
+pageRef = '/outreach'
+
+[[menus.main]]
+name = 'Get Involved'
+pageRef = '/get-involved'
+
+[[menus.main]]
+name = 'Officers'
+pageRef = '/officers'
+
+[[menus.main]]
+name = 'Support Us'
+#pageRef = 'some path tBD'
+
+[params.ananke.social.follow]
+networks = ["instagram", "discord", "email"]
+
+[params.ananke.social.instagram]
+username = "ansosuchapter"
+
+[params.ananke.social.networks.discord]
+slug = "discord"
+label = "Discord"
+profile = "https://discord.gg/7ZQtrqdb"
+icon = "discord"
+
+[params.ananke.social.email]
+profilelink = "mailto:ans@oregonstate.edu"
